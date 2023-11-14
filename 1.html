@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Disciplina</title>
+</head>
+<body>
+    
+    <!-- 1 - Cadastre e imprima os dados das disciplinas de uma escola: nome, descrição do conteúdo,
+    frequência e nota mínimas para aprovação do aluno. Até o pessoa desejar sair. -->
+
+    <div id="resultado"></div>
+
+    <script>
+        let cond = prompt("Deseja cadastrar dados de disciplinas? [1 para SIM] [2 para NÃO]");
+        while(cond == 1){
+            let nome = prompt("Digite o nome da disciplina:");
+            let desc = prompt("Digite a descrição do conteúdo da disciplina:");
+            let freq = prompt("Digite a frequência da disciplina:");
+            let nota_min = prompt("Digite a nota mínima da disciplina:");
+
+            cond = prompt("Deseja cadastrar dados de disciplinas? [1 para SIM] [2 para NÃO]");
+
+            document.getElementById("resultado").innerHTML += "[ Nome da disciplina: " + nome + "<br> Descrição conteúdo da disciplina: " + desc + "<br> Frequência da disciplina: " + freq + "<br> Nota mínima da disciplina: " + nota_min + "] <br> <br> <hr> <br>";
+        }
+    </script>
+</body>
+</html>

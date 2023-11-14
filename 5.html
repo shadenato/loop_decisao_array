@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 5</title>
+</head>
+<body>
+    
+<!--     5. Uma empresa decidiu fazer um recrutamento para preencher algumas vagas. Os
+candidatos serão cadastrados por computador. Faça um algoritmo para:
+
+a) ler o número do candidato, a idade, o sexo, a experiência profissional (Sim/Não);
+b) mostrar a idade média dos candidatos;
+c) mostrar o número total de candidatos e candidatas;
+d) mostrar os candidatos (homens e mulheres) maiores de idade que tenham  experiência no serviço -->
+
+
+CANDIDATOS CADASTRADOS <u>COM EXPERIÊNCIA PROFISSIONAL</u>
+<br>
+<div id="resultado"></div>
+<div id="resultado2"></div>
+
+<script>
+
+    let numero_candidatos = Number(prompt("Quantos candidatos deseja cadastrar: "));
+    let i = "";
+    let idade_media = 0;
+    let candidatos = 0;
+    let candidatas = 0;
+
+    for(i=1 ; i <= numero_candidatos; i++){
+        let idade = Number(prompt("Digite a idade do candidato: "));
+        let sexo = Number(prompt("Digite \n1 para sexo masculino \ne 2 para sexo feminino: "));
+        let experiencia = Number(prompt ("Digite\n1 para 'sim, possui experiência profissional'\ne 2 para 'não, não possui experiência profissional': "));
+
+
+        idade_media = idade_media + idade;
+        
+        if(sexo === 1){
+            candidatos = candidatos + 1;
+            sexo = "M";
+        }
+        if (sexo === 2){
+            candidatas = candidatas + 1;
+            sexo = "F";
+        }
+
+        if(experiencia === 1){
+            document.getElementById("resultado").innerHTML += "<hr><br>Candidato nº " + i + "<br>Idade: " + idade + "<br>Sexo: " + sexo + "<br> Experiência profissional: " + experiencia;
+            experiencia = "S";
+        }
+
+
+    }
+    
+    idade_media = idade_media / numero_candidatos;
+    
+    document.getElementById("resultado2").innerHTML = "<hr><br>Nº de Candidatos: " + candidatos + "<br>Nº de Candidatas: " + candidatas + "<br>Idade média dos Candidatos(as): " + idade_media.toFixed(0);
+    
+    
+
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 3</title>
+</head>
+<body>
+    
+<!-- 3. Uma fábrica tem uma linha de produção capaz de produzir 400 peças/dia. Um
+funcionário controla a qualidade, cadastrando o número da peça e o seu estado
+(aprovado ou reprovado). Crie um algoritmo para cadastrar o controle de qualidade,
+imprimir os números das peças reprovadas e o total de peças aprovadas e reprovadas
+no final do dia. -->
+
+<div id="resultado"></div>
+
+<script>
+let qtdpecas = prompt("Quantas peças deseja cadastrar?");
+let totalaprov = 0;
+let totalreprov = 0;
+let numeropeca = 0;
+let estadopeca = 0;
+
+if (qtdpecas < 1){
+    alert("Digite um número entre 1 e 400.");
+} else if (qtdpecas > 401){
+   alert("Digite um número entre 1 e 400.");
+} else {
+    for(; qtdpecas > 0; qtdpecas--){
+        numeropeca = prompt("Digite o número da peça: ");
+        estadopeca = Number(prompt("Digite 1 para PEÇA APROVADA, e 2 para PEÇA REPROVADA: "));
+
+        if(estadopeca == 1){
+            totalaprov = totalaprov + 1;
+        } else {
+            totalreprov = totalreprov + 1;
+         }
+    }
+}
+
+    document.getElementById("resultado").innerHTML = "Total de peças cadastradas: " + (totalaprov + totalreprov) + "<br><br>Peças aprovadas: " + totalaprov + "<br> Peças reprovadas: " + totalreprov;
+
+</script>
+</body>
+</html>

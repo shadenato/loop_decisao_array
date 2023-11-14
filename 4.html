@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 4</title>
+</head>
+<body>
+
+    <!-- 4. A avaliação de um aluno nas disciplinas de uma escola segue os critérios:
+    a) em toda disciplina são aplicadas três provas;
+    b) a média final é obtida com a média aritmética das três notas;
+    c) para que o aluno seja aprovado, a sua média deverá ser igual ou superior a 7,0 e ter
+    a frequência mínima de 80% das 32 aulas ministradas.
+    Faça um algoritmo para:
+    a) ler os números das matrículas de 70 alunos, as três notas de cada um e o número de
+    aulas frequentadas por eles;
+    b) calcular e imprimir o número da matrícula do aluno, a sua média final e o resultado
+    (se aprovado ou não);
+    c) imprimir a média da turma, a maior e a menor média da turma de alunos;
+    d) imprimir o total de alunos aprovados;
+    e) imprimir o total de alunos reprovados por falta e por nota. -->
+
+
+<section>
+    <hr>
+    AVALIAÇÃO ALUNOS
+
+    <div id="resultado"></div>
+    <div id="aprov_reprov"></div>
+    <div id="maior_media"></div>
+    <div id="menor_media"></div>
+    <div id="media_turma"></div>
+
+</section>
+
+<script>
+
+let qtd_alunos = Number(prompt("Quantos alunos deseja inserir no sistema (1 a 70)"));
+let i = "";
+let aprov = 0;
+let reprov_freq = 0;
+let reprov_nota = 0;
+let reprov_ambos = 0;
+let maior_media = 0;
+let menor_media = 10;
+let media_turma = 0;
+
+if (qtd_alunos > 0 && qtd_alunos < 71){
+
+    for(i = 1; i <= qtd_alunos; i++){
+
+        let prova1 = Number(prompt("Aluno " + i + ": \nDigite a nota da PROVA 1: "));
+        let prova2 = Number(prompt("Aluno " + i + ": \nDigite a nota da PROVA 2: "));
+        let prova3 = Number(prompt("Aluno " + i + ": \nDigite a nota da PROVA 3: "));
+        let media = (prova1 + prova2 + prova3)/3
+        let frequencia = Number(prompt("Digite quantas aulas frequentadas pelo aluno " + i + " (0 a 32): "))
+        frequencia = frequencia / 32 * 100;
+        media_turma = media_turma + media;
+
+        if(media >= 7 && frequencia >= 80){
+            status = "Aprovado";
+            aprov = aprov + 1;
+        } else if(media >= 7 && frequencia < 80){
+            status = "Reprovado";
+            reprov_freq = reprov_freq + 1;
+        } else if(media < 7 && frequencia >= 80){
+            status = "Reprovado";
+            reprov_nota = reprov_nota + 1;
+        } else if(media < 7 && frequencia < 80){
+            status = "Reprovado";
+            reprov_ambos = reprov_ambos + 1;
+        }
+        
+
+        if (media > maior_media){
+            maior_media = media;
+        }
+        if (media < menor_media){
+            menor_media = media;
+        }
+
+        document.getElementById("resultado").innerHTML += "<hr>Aluno nº " + i + "<br>Prova 1: " + prova1 + "<br>Prova 2: " + prova2 + "<br>Prova 3: " + prova3 + "<br> Média:" + media.toFixed(2) + "<br>Frequência (%): " + frequencia + "<br>Status: " + status;
+
+    }
+
+    media_turma = media_turma / qtd_alunos;
+
+    document.getElementById("aprov_reprov").innerHTML = "<br><hr><br>Nº TOTAL DE APROVADOS: " + aprov + "<br> Nº TOTAL DE REPROVADOS SOMENTE POR FREQUÊNCIA: " + reprov_freq + "<br> Nº TOTAL DE REPROVADOS SOMENTE POR NOTA: " + reprov_nota + "<br> Nº TOTAL DE REPROVADOS POR FREQUÊNCIA E POR NOTA: " + reprov_ambos; 
+    
+    document.getElementById("maior_media").innerHTML = "<br><hr><br>MAIOR MÉDIA: " + maior_media.toFixed(2);
+    document.getElementById("menor_media").innerHTML = "<br><hr><br>MENOR MÉDIA: " + menor_media.toFixed(2);
+    document.getElementById("media_turma").innerHTML = "<br><hr><br>MÉDIA TURMA: " + media_turma.toFixed(2) + "<hr>";
+
+
+} else {
+
+    alert("Digite um número entre 1 e 70!");
+
+}
+
+
+
+
+
+</script>
+
+
+
+
+    
+</body>
+</html>
